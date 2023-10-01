@@ -1,0 +1,86 @@
+.body-body{
+    display: grid;
+    height: 100vh;
+    place-content: center;
+    background-color: gray;
+    perspective: 1000px;
+    --timing:1800ms;
+    --rotation: 20deg;
+}
+
+
+.Card-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+    width: 350px;
+    aspect-ratio: 6/6;
+    transition: rotate 600ms ease-in;
+    position: relative;
+    /* background-image: url(https://images5.alphacoders.com/611/611353.jpg); */
+    background-position: center;
+    background-size: cover;
+    outline: solid limegreen;
+}
+.logo,.img-spartan {
+    position: absolute;
+    opacity: 0;
+}
+
+.Card-container:hover{
+    rotate: x 35deg;
+}
+.Card-container::after{
+    content: "";
+    position: absolute;
+    inset: 2rem;
+    translate: 0px 40px;
+    background: black;
+    filter: blur(1.5rem);
+    transition: translate var(--timing) 300ms;
+    
+}
+.Card-container:hover::after{
+    rotate: x -35deg;
+    translate: 0 60px;
+    
+}
+.bg-img{
+    position: absolute;
+    z-index: 10;
+    object-fit: cover;
+    height: 100%;
+    
+}
+.img-spartan{
+    position: absolute;
+    scale: 1.8;
+    top: 0px;
+    left: 100px;
+    height: 300px;
+    opacity: 0;
+    user-select: none;
+    z-index: 100;
+    object-fit: cover;
+    background-position: center;
+    rotate: x -65deg;
+}
+
+.Card-container:hover .img-spartan{
+    opacity: 1;
+    transition: var(--timing);
+    transform: translateY(-5.5rem);
+    rotate: x calc(var(--rotation) * -1);
+   
+}
+
+
+.Card-container:hover .bg-img{
+    transition: opacity 800ms;
+    opacity: 0.1;
+}
+
+img{
+    max-width: 100%;
+}
